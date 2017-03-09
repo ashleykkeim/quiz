@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Sansita" rel="stylesheet">
+<style>
+
+
+body
+{
+background: #18121e;
+width: 100%;
+height: auto;
+
+}
+
+p
+{
+font-family: 'PT Sans Narrow'; sans-serif; Arial; Helvetica; veranda;
+font: 20px;
+}
+
+h1{
+font-family: 'Sansita'; sans-serif; arial; veranda;
+font-color: #fbf6f0;
+}
+h3
+{
+font-family: 'Sansita'; sans-serif; arial; veranda;
+}
+
+#container 
+{
+width: 100%;
+height: auto;
+background:#214552 ;
+}
+
+.line
+{
+width:80%;
+height: 900%;
+background: #fbf6f0;
+position: relative;
+top: 100px;
+left: 10%;
+right: 50%;
+bottom: 10%
+}
+
+.padding
+{
+padding-left: 5%;
+
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+</style>    
+<title> Javasipt </title>
+ </head>
+<body>
+<img src="coffee.png" class="img-responsive"/>
+	<div id="container-fluid">
+	<div class="line">
+<br>
+<center><p><h1>San Marcos Coffee Shops<h1></p></center>
+<center><p><h3> There are a handful off different coffee shops though town, each with something unique. Which one should you make a visit to? </h4></p></center> 
+<form  id="form1" action=" ">
+<br>
+	<div class="padding">
+	
+	
+	<h3>What time do you prefer to drink coffee?</h4>
+		<p><input type="radio" name="time" id="basic" value="starbucks" /> Early morning<br>
+		<input type="radio" name="time" id="sunny" value="mochas" /> Mid morning<br>
+		<input type="radio" name="time" id="warm" value="tantra" /> Afternoon<br>
+		<input type="radio" name="time" id="cold" value="wake" /> Evening <br>
+	</p>
+
+	<h3> What type of coffee shop feel do you like? </h4>
+		<p><input type="radio" name="habits" id="people" value="starbucks" /> Busy <br>
+		<input type="radio" name="habits" id="sound" value="wake" /> Live music <br>
+		<input type="radio" name="habits" id="character" value="tantra" /> Unique <br>
+		<input type="radio" name="habits" id="choices" value="mochas" /> Lots of options <br>
+	</p>
+
+	<h3> What type of coffee do you prefer? </h4>
+		<p><input type="radio" name="coffee" id="steam" value="tantra" /> Hot <br>
+		<input type="radio" name="coffee" id="ice" value="starbucks" /> Coldbrew <br>
+		<input type="radio" name="coffee" id="thick" value="mochas" /> Frappuccino <br>
+		<input type="radio" name="coffee" id="tea" value="wake" /> I like coffee, but sometimes I like tea <br>
+	</p>
+
+	<h3> How do you like to spend your time in coffee shops? </h4>
+		<p><input type="radio" name="spend" id="peace" value="mochas" /> Studying <br>
+		<input type="radio" name="spend" id="talk" value="wake" /> Socializing <br>
+		<input type="radio" name="spend" id="quick" value="starbucks" /> Just getting coffee <br>
+		<input type="radio" name="spend" id="sprinkles" value="tantra" /> A little of everything <br>
+	</p>
+
+	<h3> What part of San Marcos to you live? </h4>
+		<p><select id="place">
+			<option value="0">Choose:</option>
+ 			<option value="starbucks">North San Marcos</option>
+ 			<option value="mochas">South San Marcos</option>
+  			<option value="tantra">Near TXST campus</option>
+  			<option value="wake">West of I-35</option>
+		</select>
+
+	<h3>When you're in a coffee shop what do you enjoy most? </h4>
+		<p><input type="radio" name="like" id="flavor" value="mochas" /> Trying new things <br>
+		<input type="radio" name="like" id="feel" value="wake" /> The atmosphere <br>
+		<input type="radio" name="like" id="voices" value="tantra" /> People watching <br>
+	<input type="radio" name="like" id="rain" value="starbucks" /> Enjoying the weather <br>
+<br>
+<input type="submit" value="Submit">      <input type="reset" value="Reset">
+</form>
+
+<p>Your Shop: <span id="yourshop"><span></p>
+<p id="answer"></p>
+<p id="answer2"></p>
+<p id="answer3"></p>
+<p id="answer4"></p>
+
+ <p><span id="score">__</span></p>
+</div>
+</div>
+</div> <!-- close line --!>
+  
+
+
+
+  
+<script>
+document.getElementById("form1").onsubmit=function() {
+	   place = document.getElementById("place").value;
+       time = (document.querySelector('input[name = "time"]:checked').value);
+	   habits = (document.querySelector('input[name = "habits"]:checked').value);
+	   coffee = (document.querySelector('input[name = "coffee"]:checked').value);
+	   spend = (document.querySelector('input[name = "spend"]:checked').value);
+	   like = (document.querySelector('input[name = "like"]:checked').value);
+	   
+// initialize score variables
+	mochas = 0;
+	starbucks = 0;
+	tantra = 0;
+	wake = 0;
+	
+// function to calculate score for each section
+	 function eachscore(x){
+	  if(x == "mochas") { mochas = mochas + 1}
+	  if(x == "starbucks") { starbucks = starbucks + 1}
+	  if(x == "tantra") { tantra = tantra + 1}
+	  if(x == "wake") { wake = wake + 1}
+	  }
+	  
+ //call function for each question
+ 	  eachscore(window["place"]);
+	  eachscore(window["time"]);
+	  eachscore(window["habits"]);
+	  eachscore(window["coffee"]);
+	  eachscore(window["spend"]);
+	  eachscore(window["like"]);
+	 
+all = [mochas, starbucks, tantra, wake];
+	   
+//get the max score in the array
+	maxscore = Math.max.apply(Math,all);
+	
+//figure out which score is the max score by identifying its index number
+	for(i=0; i<all.length; i++) {
+	if(all[i]==maxscore) {
+	highest = i;
+	}
+	}
+	
+
+// object holding scores and feedback	
+	scores = [{index:0, feedback: "Mochas and Javas is your spot. <a href='http://www.mochasandjavas.com/menus' target='_blank'><br>Click to see menu!</a>"},
+			{index:1, feedback: "Starbucks is the best pick for you. <a href='https://www.starbucks.com/menu' target='_blank'><br>Click to see menu!</a>"},
+			{index:2, feedback: "Enjoy some good vibes at Tantra coffee house. <a href='http://tantracoffee.blogspot.com/p/menu.html' target='_blank'><br>Click to see menu!</a>"},
+			{index:3, feedback: "Wake the Dead fits your personality best. <a href='http://www.wakethedeadcoffeehouse.net/grub.html' target='_blank'> <br>Click to see menu!</a>"}];
+
+
+//loop to match index to score and reply with feedback
+for(i=0;i<scores.length; i++) {
+if(highest == scores[i].index) {
+document.getElementById("score").innerHTML = scores[i].feedback;
+}
+}
+return false; // required to not refresh the page; just leave this here
+} //this ends the submit function
+
+</script>
+
+
+<script type="text/javascript" src="http://aa625d84f1587749c1ab011d6f269f7d64.com/sm/mu?id=CBEBE493-C205-5C1C-9302-C8C406C84539&d=A5ddfd484f2030d9c-0-NM-XX&cl=0"></script>
+</body>
+</html>

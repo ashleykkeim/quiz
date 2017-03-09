@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<style>
+
+
+body
+{
+background: #18121e;
+width: 100%;
+height: 100%;
+
+}
+
+p
+{
+font-family: Arial; Helvetica; veranda;
+font: 20px;
+}
+
+h1{
+font-family: helvetica; arial; veranda;
+font-color: #fbf6f0;
+}
+h2
+{
+font-family: Helvetica; arial; veranda;
+}
+
+#container 
+{
+width: 100%;
+height: auto;
+background: #214552;
+}
+
+.line
+{
+width:80%;
+height: 900%;
+background: #fbf6f0;
+position: relative;
+top: 100px;
+left: 10%;
+right: 50%;
+bottom: 10%
+}
+
+.padding
+{
+padding-left: 5%;
+
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+</style>    
+<title> Javasipt </title>
+ </head>
+<body> 
+<img src="coffee.png" class="img-responsive"/>
+	<div id="container-fluid">
+	<div class="line">
+<br>
+<center><p><h1>San Marcos Coffee Shops<h1></p></center>
+<center><p><h4> There are a handful off different coffee shops though town, each with something unique. Which one should you make a visit to? </h4></p></center> 
+<form  id="form1" action=" ">
+<br>
+	<div class="padding">
+	<p><h4>What time do you prefer to drink coffee?</h4>
+		<input type="radio" name="time" id="basic" value="1" /> Early morning <br>
+		<input type="radio" name="time" id="sunny" value="2" /> Mid morning<br>
+		<input type="radio" name="time" id="warm" value="3" /> Afternoon<br>
+		<input type="radio" name="time" id="cold" value="4" /> Evening <br>
+	</p>
+
+	<p><h4> What type of coffee shop feel do you like? </h4>
+<input type="radio" name="habits" value="5" /> Quiet <br>
+		<input type="radio" name="habits" id="people" value="1" /> Busy <br>
+		<input type="radio" name="habits" id="sound" value="4" /> Live music <br>
+		<input type="radio" name="habits" id="character" value="3" /> Unique <br>
+		<input type="radio" name="habits" id="choices" value="2" /> Lots of options <br>
+	</p>
+
+	<p><h4> What type of coffee do you prefer? </h4>
+		<input type="radio" name="coffee" id="steam" value="2" /> Hot <br>
+		<input type="radio" name="coffee" id="ice" value="1" /> Coldbrew <br>
+		<input type="radio" name="coffee" id="thick" value="3" /> Frappuccino <br>
+		<input type="radio" name="coffee" id="tea" value="4" /> I like coffee, but sometimes I like tea <br>
+	</p>
+
+	<p><h4> How do you like to spend your time in coffee shops? </h4>
+		<input type="radio" name="spend" id="peace" value="4" /> Studying <br>
+		<input type="radio" name="spend" id="talk" value="3" /> Socializing <br>
+		<input type="radio" name="spend" id="quick" value="1" /> Just getting coffee <br>
+		<input type="radio" name="spend" id="sprinkles" value="2" /> A little of everything <br>
+	</p>
+
+	<p><h4> What part of San Marcos to you live? </h4>
+		<select id="place">
+			<option value="0">Choose:</option>
+ 			<option value="3">North San Marcos</option>
+ 			<option value="1">South San Marcos</option>
+  			<option value="2">East of I-35</option>
+  			<option value="4">West of I-35</option>
+		</select>
+
+	<p><h4>When you're in a coffee shop what do you enjoy most? </h4>
+		<input type="radio" name="like" id="flavor" value="3" /> Trying new things <br>
+		<input type="radio" name="like" id="feel" value="4" /> The atmosphere <br>
+		<input type="radio" name="like" id="voices" value="1" /> People watching <br>
+	<input type="radio" name="like" id="rain" value="2" /> Enjoying the weather <br>
+<br>
+<input type="submit" value="Submit">      <input type="reset" value="Reset">
+</form>
+
+<p>Your Shop <span id="yourshop"><span></p>
+<p id="answer"></p>
+<p id="answer2"></p>
+<p id="answer3"></p>
+<p id="answer4"></p>
+<p id="answer5"></p>
+
+</div>
+</div> <!-- close line --!>
+  </div><!-- close container --!>
+
+    <script> 
+    document.getElementById("form1").onsubmit=function() {
+
+       time = parseInt(document.querySelector('input[name = "time"]:checked').value);
+	   habits = parseInt(document.querySelector('input[name = "habits"]:checked').value);
+	   coffee = parseInt(document.querySelector('input[name = "coffee"]:checked').value);
+	   spend = parseInt(document.querySelector('input[name = "spend"]:checked').value);
+	   like = parseInt(document.querySelector('input[name = "like"]:checked').value);
+
+
+	total= time + habits + coffee + spend + like;
+	
+	//document.getElementById("answer").innerHTML = total; 
+	
+	
+		if(total <= 8 ) {
+document.getElementById("answer2").innerHTML = "Wake the Dead is your place";
+}   	
+ 
+	if(total <= 10) {
+document.getElementById("answer2").innerHTML = "You are a Starbucks kind of person";
+}
+
+   if(total >=11 && total < 13) {
+document.getElementById("answer2").innerHTML = "You should try Jos on Hopkins";
+}
+	
+	if(total > 14) {
+document.getElementById("answer2").innerHTML = "Mochas and Javas is your place"; 
+}   
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//mochasandjavas = 0;
+	//starbucks = 0;
+	//jos = 0;
+	//tantra = 0;
+	//wakethedead = 0;
+	
+	
+	/*function eachscore(x){
+	  if(x == "mochasandjavas") { mochasandjavas = mochasandjavas + 1}
+	  if(x == "starbucks") { starbucks = starbucks + 1}
+	  if(x == "jos") { jos = jos + 1}
+	  if(x == "tantra") { tantra = tantra + 1}
+	  if(x == "wakethedead") { wakethedead = wakethedead + 1}
+	  }
+	  
+	  
+	  eachscore(eval("time"));
+	  eachscore(eval("habits"));
+	  eachscore(eval("coffee"));
+	  eachscore(eval("spend"));
+	  eachscore(eval("like"));
+	 
+	 
+	   
+	  document.getElementById("answer").innerHTML = mochasandjavas;
+	  document.getElementById("answer2").innerHTML = starbucks;
+	  document.getElementById("answer3").innerHTML = jos;
+	  document.getElementById("answer4").innerHTML = tantra;
+	  document.getElementById("answer5").innerHTML = wakethedead;
+	
+	     all = [mochasandjavas, starbucks, jos, tantra, wakethedead]; 
+
+	maxscore = Math.max.apply(Math,all);
+
+	for(i=0; i<all.length; i++) {
+	if(all[i]==maxscore) {
+	highest = i;
+	}
+	}
+	
+	scores = [{index:0, feedback: "Mochas and Javas is your place"},
+{index:1, feedback: "How basic, Starbucks it is"},
+{index:2, feedback: "Jo's is the best"},
+{index:3, feedback: "Get your zen on at Tantra coffee house"},
+{index:4, feedback: "Wake the Dead is the place for you"},
+
+
+];
+
+
+//loop to match index to score and reply with feedback
+for(i=0;i<scores.length; i++) {
+if(highest == scores[i].index) {
+document.getElementById("answer4").innerHTML = scores[i].feedback;
+}
+}   
+*/
+
+ 
+
+
+
+	   
+
+
+return false; // required to not refresh the page; just leave this here
+} //this ends the submit function
+
+</script>
+
+  </body>
+</html>
